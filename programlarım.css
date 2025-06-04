@@ -1,0 +1,637 @@
+/* Programlarım Sayfası için CSS */
+
+:root {
+    --primary-color: #ff6b00;
+    --secondary-color: #00f0ff;
+    --dark-color: #0f0f15;
+    --light-color: #f5f5f5;
+    --neon-glow: 0 0 10px var(--primary-color), 
+                 0 0 20px var(--primary-color), 
+                 0 0 30px var(--primary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    overflow-x: hidden;
+    position: relative;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 100px;
+}
+
+.profile-card {
+    background: rgba(15, 15, 25, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+    transform: rotate(30deg);
+    z-index: -1;
+    animation: bgRotate 15s linear infinite;
+}
+
+@keyframes bgRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--neon-glow);
+    transition: transform 0.5s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.level-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+    animation: pulse 2s infinite;
+}
+
+h1.title-glitch {
+    font-family: 'Righteous', cursive;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0 0 10px var(--primary-color),
+                 0 0 20px var(--primary-color),
+                 0 0 30px var(--primary-color);
+    position: relative;
+    animation: glitch 5s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { text-shadow: 0 0 10px var(--primary-color); }
+    1% { transform: translate(-2px, 2px); }
+    2% { transform: translate(2px, -2px); }
+    3% { transform: translate(-2px, -2px); }
+    4% { transform: translate(2px, 2px); }
+    5% { transform: translate(0); }
+}
+
+h2.subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+.bio-section {
+    margin-bottom: 30px;
+}
+
+p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* Beceriler Bölümü Stilleri */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.skill-category {
+    background: rgba(25, 25, 35, 0.5);
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-title i {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.skill-name {
+    font-weight: 500;
+}
+
+.skill-years {
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.skill-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Projeler Bölümü Stilleri */
+.projects-section {
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    color: var(--primary-color);
+}
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: rgba(30, 30, 40, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+                0 0 15px var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.project-header i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.project-header h4 {
+    font-size: 1.2rem;
+    color: var(--light-color);
+}
+
+.project-card p {
+    margin-bottom: 15px;
+    flex-grow: 1;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tech span {
+    background: rgba(255, 107, 0, 0.2);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 107, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-tech span:hover {
+    background: rgba(255, 107, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Sidebar stilleri */
+.sidebar {
+    width: 120px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 10;
+    background: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(5px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-button i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+}
+
+.sidebar-button span {
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.neon-btn {
+    border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+.neon-btn:hover {
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--primary-color);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.neon-btn:hover i {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.neon-btn:hover span {
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.active {
+    background: rgba(255, 107, 0, 0.2);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+}
+
+.active i {
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+.active span {
+    font-weight: bold;
+}
+
+.neon-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.neon-btn:hover .neon-border {
+    border-color: var(--primary-color);
+    box-shadow: inset 0 0 10px var(--primary-color),
+                0 0 10px var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.social-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.social-icon:hover::after {
+    opacity: 1;
+    right: 60px;
+}
+
+.twitch { background: #9147ff; }
+.youtube { background: #ff0000; }
+.twitter { background: #1da1f2; }
+.discord { background: #5865f2; }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.spotify { background: #81B71A;}
+
+.social-icon:hover {
+    transform: scale(1.2) translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animasyon ve özel efektler */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 107, 0, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 992px) {
+    .content {
+        padding: 20px;
+        margin-bottom: 80px;
+        height: auto;
+        max-height: calc(100vh - 80px);
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 80px;
+        bottom: 0;
+        top: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: none;
+    }
+    
+    .sidebar-buttons {
+        flex-direction: row;
+        margin-bottom: 0;
+        overflow-x: auto;
+        padding: 0 10px;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .sidebar-button {
+        width: 60px;
+        height: 60px;
+        margin: 0 5px;
+        flex-shrink: 0;
+    }
+    
+    .sidebar-button i {
+        font-size: 20px;
+    }
+    
+    .sidebar-button span {
+        font-size: 10px;
+    }
+    
+    .social-links {
+        display: none;
+    }
+    
+    h1.title-glitch {
+        font-size: 2.5rem;
+    }
+    
+    h2.subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .profile-card {
+        padding: 25px 15px;
+    }
+    
+    .project-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .level-badge {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .skill-category {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .content {
+        padding: 15px;
+    }
+    
+    h1.title-glitch {
+        font-size: 2rem;
+    }
+    
+    .avatar-container {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .level-badge {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .sidebar-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .sidebar-button i {
+        font-size: 18px;
+    }
+    
+    .sidebar-button span {
+        font-size: 8px;
+    }
+    
+    .category-title {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}

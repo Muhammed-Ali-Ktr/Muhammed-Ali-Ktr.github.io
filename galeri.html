@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMİRHAN TAZEGÜL - Galeri</title>
+    <link rel="icon" href="image/emr-foto-1.jpg" type="image/jpg">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="galeri.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="content gallery-content">
+        <h1 class="title-glitch">Galeri</h1>
+        
+        <div class="gallery-controls">
+            <button class="control-btn active" data-filter="all">Tümü</button>
+            <button class="control-btn" data-filter="gaming">Oyun</button>
+            <button class="control-btn" data-filter="tech">Teknoloji</button>
+            <button class="control-btn" data-filter="personal">Kişisel</button>
+            <div class="add-photo-btn">
+                <i class="fas fa-plus"></i> Fotoğraf Ekle
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Fotoğraf kartları -->
+            <div class="gallery-item" data-category="tech">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="image/emr-pc-1.jpg" alt="Teknoloji Projesi">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">24</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Bilgisayarım</h3>
+                        <p class="card-text">Akşam bilgisayar sefası yaparken.</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 23 Mayıs, 2025</span>
+                            <span class="card-tag tech-tag">Teknoloji</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gaming">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/600" alt="Oyun Turnuvası">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">42</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">E-Spor Turnuvasında</h3>
+                        <p class="card-text">İstanbul'daki büyük turnuvada oyun arkadaşlarımla birlikte.</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 10 Mayıs, 2025</span>
+                            <span class="card-tag gaming-tag">Oyun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="personal">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/600" alt="Doğa Yürüyüşü">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">18</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Doğa Yürüyüşünde</h3>
+                        <p class="card-text">Hafta sonu arkadaşlarımla birlikte Ereğli'nin güzel doğasında.</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 8 Mayıs, 2025</span>
+                            <span class="card-tag personal-tag">Kişisel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="tech">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/600" alt="Kod Yazarken">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">31</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Gece Kod Yazımı</h3>
+                        <p class="card-text">Yeni web projemde gece boyu çalışırken çekilen bir kare.</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 5 Mayıs, 2025</span>
+                            <span class="card-tag tech-tag">Teknoloji</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gaming">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/600" alt="Yeni Oyun">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">27</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Yeni Oyun Deneyimi</h3>
+                        <p class="card-text">Yeni çıkan oyunu test ederken heyecan dorukta!</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 2 Mayıs, 2025</span>
+                            <span class="card-tag gaming-tag">Oyun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="personal">
+                <div class="gallery-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/600" alt="Kitap Okurken">
+                        <div class="card-overlay">
+                            <div class="card-actions">
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i> <span class="like-count">15</span></button>
+                                <button class="action-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kitap Köşemde</h3>
+                        <p class="card-text">Bilim kurgu kitabımı okurken sakin bir akşam vakti.</p>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar-alt"></i> 28 Nisan, 2025</span>
+                            <span class="card-tag personal-tag">Kişisel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yükleniyor animasyonu -->
+        <div class="load-more">
+            <button class="load-more-btn">
+                <span>Daha Fazla</span>
+                <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Fotoğraf görüntüleme modal -->
+    <div class="photo-modal">
+        <div class="modal-container">
+            <div class="modal-close"><i class="fas fa-times"></i></div>
+            <div class="modal-image">
+                <img src="" alt="Büyük Fotoğraf">
+            </div>
+            <div class="modal-content">
+                <h3 class="modal-title"></h3>
+                <p class="modal-description"></p>
+                <div class="modal-actions">
+                    <button class="modal-like-btn"><i class="far fa-heart"></i> <span class="modal-like-count">0</span></button>
+                    <button class="modal-share-btn"><i class="fas fa-share-alt"></i> Paylaş</button>
+                </div>
+                <div class="modal-comments">
+                    <h4>Yorumlar</h4>
+                    <div class="comments-list">
+                        <div class="comment">
+                            <div class="comment-avatar">
+                                <img src="/api/placeholder/40/40" alt="Kullanıcı">
+                            </div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">Ahmet K.</span>
+                                    <span class="comment-time">2 saat önce</span>
+                                </div>
+                                <p class="comment-text">Harika görünüyor! Hangi yazılımları kullanıyorsun?</p>
+                                <div class="comment-actions">
+                                    <button class="comment-like"><i class="far fa-heart"></i> 3</button>
+                                    <button class="comment-reply">Yanıtla</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-avatar">
+                                <img src="/api/placeholder/40/40" alt="Kullanıcı">
+                            </div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">Zeynep Y.</span>
+                                    <span class="comment-time">1 gün önce</span>
+                                </div>
+                                <p class="comment-text">Çok etkileyici bir çalışma olmuş!</p>
+                                <div class="comment-actions">
+                                    <button class="comment-like"><i class="far fa-heart"></i> 5</button>
+                                    <button class="comment-reply">Yanıtla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-comment">
+                        <div class="comment-avatar">
+                            <img src="/api/placeholder/40/40" alt="Kullanıcı">
+                        </div>
+                        <div class="comment-input-container">
+                            <textarea class="comment-input" placeholder="Bir yorum yaz..."></textarea>
+                            <button class="comment-submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fotoğraf ekle modal -->
+    <div class="add-photo-modal">
+        <div class="modal-container">
+            <div class="modal-close"><i class="fas fa-times"></i></div>
+            <h2>Yeni Fotoğraf Ekle</h2>
+            <form id="photoUploadForm">
+                <div class="upload-preview">
+                    <div id="uploadPreviewContainer">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Fotoğraf yüklemek için tıklayın veya sürükleyin</p>
+                    </div>
+                    <img id="previewImage" src="" alt="Önizleme" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="photoTitle">Başlık</label>
+                    <input type="text" id="photoTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="photoDescription">Açıklama</label>
+                    <textarea id="photoDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="photoCategory">Kategori</label>
+                    <select id="photoCategory" required>
+                        <option value="tech">Teknoloji</option>
+                        <option value="gaming">Oyun</option>
+                        <option value="personal">Kişisel</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">İptal</button>
+                    <button type="submit" class="btn-submit">Yayınla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Paylaş Modal -->
+    <div class="share-modal">
+        <div class="modal-container">
+            <div class="modal-close"><i class="fas fa-times"></i></div>
+            <h2>Bu Fotoğrafı Paylaş</h2>
+            <div class="share-options">
+                <a href="#" class="share-option twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="share-option facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="share-option instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="share-option whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="#" class="share-option copy-link">
+                    <i class="fas fa-link"></i>
+                    <span>Bağlantıyı Kopyala</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast bildirim -->
+    <div class="toast-notification">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message"></span>
+        <button class="toast-close"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="sidebar">
+        <div class="sidebar-buttons">
+            <a href="index.html">
+            <button id="anasayfa" class="sidebar-button neon-btn" data-target="home">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="galeri.html">
+            <button id="galeri" class="sidebar-button neon-btn active" data-target="gallery">
+                <i class="fas fa-images"></i>
+                <span>Galeri</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="system.html">
+            <button id="sistem" class="sidebar-button neon-btn" data-target="system">
+                <i class="fas fa-mouse"></i>
+                <span>Sistem</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="programlarım.html">
+            <button id="programlarım" class="sidebar-button neon-btn" data-target="code">
+                <i class="fas fa-code"></i>
+                <span>Programlarım</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="randevu.html">
+            <button id="randevu" class="sidebar-button neon-btn" data-target="schedule">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu Programı</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="oyunlar.html">
+            <button id="oyunlar" class="sidebar-button neon-btn" data-target="games">
+                <i class="fas fa-gamepad"></i>
+                <span>Oynadığım Oyunlar</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="iletisim.html">
+            <button id="iletişim" class="sidebar-button neon-btn" data-target="contact">
+                <i class="fas fa-envelope"></i>
+                <span>İletişim</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+        </div>
+
+         <div class="social-links">
+            <a href="https://www.youtube.com/@emirhantzgl" class="social-icon youtube" data-tooltip="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com/emirhantazegull" class="social-icon twitter" data-tooltip="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://discord.gg/emirhan36" class="social-icon discord" data-tooltip="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://www.instagram.com/emirhantazegull/" class="social-icon instagram" data-tooltip="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://open.spotify.com/user/31su5kv56ajlk5cnywt65c2dpld4" class="social-icon spotify" data-tooltip="Spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="page-transition"></div>
+    <div class="notification"></div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script src="galeri.js"></script>
+</body>
+</html>

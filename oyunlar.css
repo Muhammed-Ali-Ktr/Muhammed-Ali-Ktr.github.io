@@ -1,0 +1,301 @@
+/* Oyun Kartları Sayfası için CSS */
+
+/* Genel CSS değişkenlerinden yararlanılıyor (var ile başlayan tanımlamalar) */
+
+/* Oyun filtreleri */
+.game-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background: rgba(15, 15, 30, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-group {
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+}
+
+/* Oyun Kartları */
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.game-card {
+    background: rgba(20, 20, 35, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 15px var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.game-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.game-card:hover .game-image img {
+    transform: scale(1.1);
+}
+
+.game-completion {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+.game-info {
+    padding: 20px;
+}
+
+.game-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 600;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.game-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.game-details i {
+    color: var(--secondary-color);
+    margin-right: 5px;
+}
+
+.game-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #ddd;
+    height: 80px;
+    overflow: hidden;
+}
+
+.game-rating {
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+/* Yeni Oyun Ekle Butonu */
+.add-game-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--primary-color), #ff8c00);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px auto;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    display: block;
+}
+
+.add-game-button i {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.add-game-button:hover {
+    transform: translateY(-5px) perspective(500px) rotateX(10deg);
+    box-shadow: 0 15px 25px rgba(255, 107, 0, 0.6);
+}
+
+.add-game-button:hover i {
+    transform: rotate(90deg);
+}
+
+/* Aktif menü */
+.sidebar-button.active {
+    background: rgba(255, 107, 0, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+}
+
+.sidebar-button.active i,
+.sidebar-button.active span {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.sidebar-button.active .neon-border {
+    border-color: var(--primary-color);
+    box-shadow: inset 0 0 10px var(--primary-color),
+                0 0 10px var(--primary-color);
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 992px) {
+    .games-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+        margin: 5px 0;
+    }
+    
+    .game-filters {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .game-title {
+        font-size: 1.1rem;
+        height: auto;
+        min-height: 40px;
+    }
+    
+    .game-description {
+        height: auto;
+        max-height: 80px;
+    }
+    
+    .add-game-button {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .games-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-image {
+        height: 160px;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .profile-card {
+        padding: 20px 15px;
+    }
+}
+
+/* Oyun kartlarına animasyon efektleri */
+.game-card {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+.game-card:nth-child(4) { animation-delay: 0.4s; }
+.game-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Filtreleme için JavaScript'le kullanılacak durumlar */
+.game-card.hidden {
+    display: none;
+}
+
+.game-card.filtered {
+    animation: pulseHighlight 1s ease;
+}
+
+@keyframes pulseHighlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); box-shadow: 0 0 20px var(--primary-color); }
+    100% { transform: scale(1); }
+}
+
+/* Boş sonuç mesajı için stil */
+.no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #aaa;
+    grid-column: 1 / -1;
+    background: rgba(15, 15, 30, 0.6);
+    border-radius: 15px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    display: none;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+}

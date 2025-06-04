@@ -1,0 +1,172 @@
+/* sistem.css - Custom styles for System Information page */
+
+/* Hardware sections styling */
+.hardware-section {
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hardware-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 107, 0, 0.05),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.hardware-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hardware-section:hover::before {
+    transform: translateX(100%);
+}
+
+.hardware-section h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.hardware-section h3 i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.hardware-section p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Stats counter animation */
+.stat-value {
+    position: relative;
+}
+
+.stat-value::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 1s ease;
+}
+
+.stat-value.animated::after {
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hardware-section {
+        padding: 15px;
+    }
+    
+    .hardware-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-item {
+        margin: 15px 0;
+    }
+}
+
+/* Animation for hardware icons */
+@keyframes iconPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.hardware-section h3 i {
+    animation: iconPulse 2s infinite;
+}
+
+/* Delay animations for each icon */
+.hardware-section:nth-child(1) h3 i { animation-delay: 0.2s; }
+.hardware-section:nth-child(2) h3 i { animation-delay: 0.4s; }
+.hardware-section:nth-child(3) h3 i { animation-delay: 0.6s; }
+.hardware-section:nth-child(4) h3 i { animation-delay: 0.8s; }
+.hardware-section:nth-child(5) h3 i { animation-delay: 1s; }
+.hardware-section:nth-child(6) h3 i { animation-delay: 1.2s; }
+.hardware-section:nth-child(7) h3 i { animation-delay: 1.4s; }
+
+/* Highlight text animation */
+.highlight {
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.hardware-section:hover .highlight::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Follow button specific styling for this page */
+.follow-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.follow-button:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Particle.js canvas adjustment */
+#particles-js {
+    background: radial-gradient(ellipse at top, #1B2735 0%, #090A0F 100%);
+}
+
+
+/* Fare Hareketleri */
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overscroll-behavior-y: contain;
+}

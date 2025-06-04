@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMİRHAN TAZEGÜL - Oynadığım Oyunlar</title>
+    <link rel="icon" href="image/emr-foto-1.jpg" type="image/jpg">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="oyunlar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="content">
+        <div class="profile-card">
+            <div class="avatar-container">
+                <img src="image/emr-foto-1.jpg" alt="EmirhanAvatar" class="avatar">
+                <div class="level-badge">20</div>
+            </div>
+            
+            <h1 class="title-glitch">Oynadığım Oyunlar</h1>
+            <h2 class="subtitle">Emirhan'ın Oyun Arşivi</h2>
+            
+            <div class="bio-section">
+                <p class="typing-animation">Bu sayfada oynadığım ve bitirdiğim oyunları görebilirsiniz. Her oyun için tamamlama tarihi ve oyun hakkındaki düşüncelerimi paylaşıyorum.</p>
+            </div>
+            
+            <!-- Oyun Filtreleme Araçları -->
+            <div class="game-filters">
+                <div class="filter-group">
+                    <label for="game-search">Oyun Ara:</label>
+                    <input type="text" id="game-search" placeholder="Oyun adı yazın...">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="game-sort">Sırala:</label>
+                    <select id="game-sort">
+                        <option value="newest">En Yeni</option>
+                        <option value="oldest">En Eski</option>
+                        <option value="alphabetical">A-Z</option>
+                        <option value="reverse-alphabetical">Z-A</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="game-category">Kategori:</label>
+                    <select id="game-category">
+                        <option value="all">Hepsi</option>
+                        <option value="fps">FPS</option>
+                        <option value="rpg">RPG</option>
+                        <option value="adventure">Macera</option>
+                        <option value="strategy">Strateji</option>
+                        <option value="simulation">Simülasyon</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Oyun Kartları -->
+            <div class="games-container">
+                <!-- Oyun Kartı 1 -->
+                <div class="game-card" data-category="fps" data-date="2023-05-10">
+                    <div class="game-image">
+                        <img src="image/uncharted.jpg" alt="UNCHARTED: Hırsızlar Mirası Koleksiyonu">
+                        <div class="game-completion">Tamamlandı</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">UNCHARTED: Hırsızlar Mirası Koleksiyonu</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i> 10.05.2023</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> FPS</span>
+                        </div>
+                        <p class="game-description">Modern Warfare serisinin hikayesini çok etkileyici buldum. Özellikle Captain Price karakteri mükemmel tasarlanmış!</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oyun Kartı 2 -->
+                <div class="game-card" data-category="rpg" data-date="2023-08-15">
+                    <div class="game-image">
+                        <img src="image/cs-go.jpg" alt="CS-GO">
+                        <div class="game-completion">∞</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">CS-GO</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i>∞</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> RPG</span>
+                        </div>
+                        <p class="game-description">En sevdiğim RPG oyunlarından biri! Karakterler, hikaye ve açık dünya tasarımı muazzam.</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oyun Kartı 3 -->
+                <div class="game-card" data-category="adventure" data-date="2024-01-20">
+                    <div class="game-image">
+                        <img src="image/ets-2.jpg" alt="ETS 2">
+                        <div class="game-completion">Tamamlandı</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">ETS 2</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i> 20.01.2024</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> HİKAYE</span>
+                        </div>
+                        <p class="game-description">Arthur Morgan'ın hikayesi beni derinden etkiledi. Vahşi Batı'nın sonu muhteşem canlandırılmış.</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oyun Kartı 4 -->
+                <div class="game-card" data-category="strategy" data-date="2023-11-05">
+                    <div class="game-image">
+                        <img src="image/asetta-corsa.jpg" alt="Asetto Corsa">
+                        <div class="game-completion">Tamamlandı</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Asetto Corsa</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i> 05.11.2023</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> HİKAYE</span>
+                        </div>
+                        <p class="game-description">Saatlerce oynayıp zamanın nasıl geçtiğini anlamadığım oyunlardan.</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oyun Kartı 5 -->
+                <div class="game-card" data-category="simulation" data-date="2024-03-12">
+                    <div class="game-image">
+                        <img src="image/battlefield1.jpg" alt="Battlefıeld">
+                        <div class="game-completion">Devam Ediyor</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Battlefıeld</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i> 12.03.2024</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> FPS</span>
+                        </div>
+                        <p class="game-description">Grafikleri inanılmaz gerçekçi. İstanbul üzerinde uçmak çok keyifli bir deneyim.</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oyun Kartı 6 -->
+                <div class="game-card" data-category="strategy" data-date="2023-11-05">
+                    <div class="game-image">
+                        <img src="image/fc-25.jpg" alt="EA Sports FC 25">
+                        <div class="game-completion">Devam Ediyor</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">EA Sports FC 25</h3>
+                        <div class="game-details">
+                            <span class="game-date"><i class="fas fa-calendar-alt"></i> 05.11.2023</span>
+                            <span class="game-category"><i class="fas fa-gamepad"></i> Simülasyon</span>
+                        </div>
+                        <p class="game-description">Saatlerce oynayıp zamanın nasıl geçtiğini anlamadığım oyunlardan.</p>
+                        <div class="game-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Yeni Oyun Ekle Butonu -->
+            <a href="#" class="add-game-button hover-3d">
+                <span>YENİ OYUN EKLE</span>
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <div class="sidebar-buttons">
+
+            <a href="index.html">
+            <button id="anasayfa" class="sidebar-button neon-btn" data-target="home">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="galeri.html">
+            <button id="galeri" class="sidebar-button neon-btn" data-target="gallery">
+                <i class="fas fa-images"></i>
+                <span>Galeri</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="system.html">
+            <button id="sistem" class="sidebar-button neon-btn" data-target="system">
+                <i class="fas fa-mouse"></i>
+                <span>Sistem</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="programlarım.html">
+            <button id="programlarım" class="sidebar-button neon-btn" data-target="code">
+                <i class="fas fa-code"></i>
+                <span>Programlarım</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="randevu.html">
+            <button id="randevu" class="sidebar-button neon-btn" data-target="schedule">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu Programı</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="oyunlar.html">
+            <button  id="oyunlar" class="sidebar-button neon-btn active" data-target="games">
+                <i class="fas fa-gamepad"></i>
+                <span>Oynadığım Oyunlar</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="iletisim.html">
+            <button id="iletişim" class="sidebar-button neon-btn" data-target="contact">
+                <i class="fas fa-envelope"></i>
+                <span>İletişim</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+        </div>
+
+         <div class="social-links">
+            <a href="https://www.youtube.com/@emirhantzgl" class="social-icon youtube" data-tooltip="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com/emirhantazegull" class="social-icon twitter" data-tooltip="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://discord.gg/emirhan36" class="social-icon discord" data-tooltip="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://www.instagram.com/emirhantazegull/" class="social-icon instagram" data-tooltip="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://open.spotify.com/user/31su5kv56ajlk5cnywt65c2dpld4" class="social-icon spotify" data-tooltip="Spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="page-transition"></div>
+    <div class="notification"></div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script src="oyunlar.js"></script>
+</body>
+</html>

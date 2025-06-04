@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMİRHAN TAZEGÜL - Randevu Sistemi</title>
+    <link rel="icon" href="image/emr-foto-1.jpg" type="image/jpg">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="randevu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b00;
+            --secondary-color: #00f0ff;
+            --dark-color: #0f0f15;
+            --light-color: #f5f5f5;
+            --neon-glow: 0 0 10px var(--primary-color), 
+                          0 0 20px var(--primary-color), 
+                          0 0 30px var(--primary-color);
+        }
+
+        .randevu-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .canlı-saat {
+            background: rgba(15, 15, 25, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .saat-icerik {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: var(--light-color);
+        }
+
+        .saat-kutu {
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 10px 20px;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .saat-kutu h3 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+        }
+
+        .saat-kutu p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .tarih-bilgisi {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .randevu-bölümleri {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .randevu-kart {
+            background: rgba(15, 15, 25, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .randevu-kart:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-color);
+        }
+
+        .randevu-kart h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .randevu-kart h3 i {
+            font-size: 1.2rem;
+        }
+
+        .randevu-kart p {
+            color: var(--light-color);
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .takvim {
+            margin: 20px 0;
+        }
+
+        .takvim-baslik {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .takvim-baslik h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        .takvim-kontroller {
+            display: flex;
+            gap: 10px;
+        }
+
+        .takvim-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light-color);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .takvim-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .takvim-günler {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .gün-isimleri {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .gün-isimleri span {
+            padding: 5px 0;
+        }
+
+        .takvim-günleri {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .gün {
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+
+        .gün:hover {
+            background: rgba(255, 107, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .gün.bugun {
+            background: rgba(255, 107, 0, 0.3);
+            border: 1px solid var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .gün.secili {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+        }
+
+        .gün.devre-disi {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .durum-noktası {
+            position: absolute;
+            bottom: 3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .müsait {
+            background-color: #00c853;
+        }
+
+        .kısmen-dolu {
+            background-color: #ffc107;
+        }
+
+        .dolu {
+            background-color: #f44336;
+        }
+
+        .saatler {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .saat-slot {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .saat-slot:hover {
+            background: rgba(255, 107, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .saat-slot.secili {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .saat-slot.dolu {
+            opacity: 0.5;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .randevu-formu {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .form-grup {
+            margin-bottom: 15px;
+        }
+
+        .form-grup label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .randevu-btn {
+            background: linear-gradient(45deg, var(--primary-color), #ff8c00);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .randevu-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .durum-gösterge {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .durum-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .durum-renk {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .özet-bölüm {
+            background: rgba(15, 15, 25, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .özet-başlık {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .özet-liste {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .özet-madde {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .özet-madde .etiket {
+            color: var(--light-color);
+            opacity: 0.7;
+        }
+
+        .özet-madde .değer {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .emoji {
+            font-style: normal;
+            font-size: 1.2em;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .randevu-baslik {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .randevu-baslik h2 {
+            font-family: 'Righteous', cursive;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--primary-color),
+                        0 0 20px var(--primary-color);
+        }
+
+        .randevu-baslik p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .randevu-bölümleri {
+                grid-template-columns: 1fr;
+            }
+
+            .saat-icerik {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .randevu-baslik h2 {
+                font-size: 2rem;
+            }
+
+            .gün {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="content">
+        <div class="randevu-container">
+            <div class="randevu-baslik">
+                <h2>Randevu Programı</h2>
+                <p>Projeleriniz, yazılım ihtiyaçlarınız veya diğer konular için randevu alarak görüşme zamanı belirleyebilirsiniz.</p>
+            </div>
+
+            <div class="canlı-saat">
+                <div class="saat-icerik">
+                    <div class="saat-kutu">
+                        <h3 id="saat">00</h3>
+                        <p>Saat</p>
+                    </div>
+                    <div class="saat-kutu">
+                        <h3 id="dakika">00</h3>
+                        <p>Dakika</p>
+                    </div>
+                    <div class="saat-kutu">
+                        <h3 id="saniye">00</h3>
+                        <p>Saniye</p>
+                    </div>
+                </div>
+                <div class="tarih-bilgisi" id="tarih">
+                    1 Ocak 2023, Pazartesi
+                </div>
+            </div>
+
+            <div class="randevu-bölümleri">
+                <div class="randevu-kart">
+                    <h3><i class="fas fa-laptop-code"></i> Yazılım Danışmanlığı</h3>
+                    <p>Proje geliştirme, kod inceleme veya yazılım çözümleri için teknik danışmanlık randevusu alabilirsiniz.</p>
+                    
+                    <div class="takvim">
+                        <div class="takvim-baslik">
+                            <h4 id="takvim-ay">Mayıs 2025</h4>
+                            <div class="takvim-kontroller">
+                                <button class="takvim-btn" id="önceki-ay"><i class="fas fa-chevron-left"></i></button>
+                                <button class="takvim-btn" id="sonraki-ay"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="gün-isimleri">
+                            <span>Pt</span>
+                            <span>Sa</span>
+                            <span>Ça</span>
+                            <span>Pe</span>
+                            <span>Cu</span>
+                            <span>Ct</span>
+                            <span>Pz</span>
+                        </div>
+                        
+                        <div class="takvim-günleri" id="yazılım-takvim">
+                            <!-- JavaScript ile doldurulacak -->
+                        </div>
+                    </div>
+                    
+                    <div class="durum-gösterge">
+                        <div class="durum-item">
+                            <div class="durum-renk müsait"></div>
+                            <span>Müsait</span>
+                        </div>
+                        <div class="durum-item">
+                            <div class="durum-renk kısmen-dolu"></div>
+                            <span>Kısmen Dolu</span>
+                        </div>
+                        <div class="durum-item">
+                            <div class="durum-renk dolu"></div>
+                            <span>Dolu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="saatler" id="yazılım-saatler">
+                        <div class="saat-slot">09:00</div>
+                        <div class="saat-slot">10:00</div>
+                        <div class="saat-slot">11:00</div>
+                        <div class="saat-slot dolu">12:00</div>
+                        <div class="saat-slot">13:00</div>
+                        <div class="saat-slot">14:00</div>
+                        <div class="saat-slot dolu">15:00</div>
+                        <div class="saat-slot">16:00</div>
+                        <div class="saat-slot">17:00</div>
+                    </div>
+                    
+                    <div class="randevu-formu" id="yazılım-form">
+                        <div class="form-grup">
+                            <label for="yazılım-ad">Adınız Soyadınız</label>
+                            <input type="text" id="yazılım-ad" class="form-input" placeholder="Adınızı ve soyadınızı giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="yazılım-email">E-posta Adresiniz</label>
+                            <input type="email" id="yazılım-email" class="form-input" placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="yazılım-telefon">Telefon Numaranız</label>
+                            <input type="tel" id="yazılım-telefon" class="form-input" placeholder="Telefon numaranızı giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="yazılım-konu">Görüşme Konusu</label>
+                            <input type="text" id="yazılım-konu" class="form-input" placeholder="Görüşmek istediğiniz konuyu belirtiniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="yazılım-detay">Detaylar</label>
+                            <textarea id="yazılım-detay" class="form-input form-textarea" placeholder="Görüşme konusuyla ilgili detayları yazabilirsiniz"></textarea>
+                        </div>
+                        
+                        <button type="button" class="randevu-btn" id="yazılım-gönder">
+                            <i class="fas fa-calendar-check"></i>
+                            Randevu Oluştur
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="randevu-kart">
+                    <h3><i class="fas fa-gamepad"></i> Oyun Geliştirme</h3>
+                    <p>Oyun projeleri, oyun tasarımı veya oyun geliştirme ile ilgili sorularınız için randevu alabilirsiniz.</p>
+                    
+                    <div class="takvim">
+                        <div class="takvim-baslik">
+                            <h4 id="oyun-takvim-ay">Mayıs 2025</h4>
+                            <div class="takvim-kontroller">
+                                <button class="takvim-btn" id="oyun-önceki-ay"><i class="fas fa-chevron-left"></i></button>
+                                <button class="takvim-btn" id="oyun-sonraki-ay"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="gün-isimleri">
+                            <span>Pt</span>
+                            <span>Sa</span>
+                            <span>Ça</span>
+                            <span>Pe</span>
+                            <span>Cu</span>
+                            <span>Ct</span>
+                            <span>Pz</span>
+                        </div>
+                        
+                        <div class="takvim-günleri" id="oyun-takvim">
+                            <!-- JavaScript ile doldurulacak -->
+                        </div>
+                    </div>
+                    
+                    <div class="durum-gösterge">
+                        <div class="durum-item">
+                            <div class="durum-renk müsait"></div>
+                            <span>Müsait</span>
+                        </div>
+                        <div class="durum-item">
+                            <div class="durum-renk kısmen-dolu"></div>
+                            <span>Kısmen Dolu</span>
+                        </div>
+                        <div class="durum-item">
+                            <div class="durum-renk dolu"></div>
+                            <span>Dolu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="saatler" id="oyun-saatler">
+                        <div class="saat-slot dolu">09:00</div>
+                        <div class="saat-slot">10:00</div>
+                        <div class="saat-slot dolu">11:00</div>
+                        <div class="saat-slot">12:00</div>
+                        <div class="saat-slot">13:00</div>
+                        <div class="saat-slot dolu">14:00</div>
+                        <div class="saat-slot">15:00</div>
+                        <div class="saat-slot">16:00</div>
+                        <div class="saat-slot dolu">17:00</div>
+                    </div>
+                    
+                    <div class="randevu-formu" id="oyun-form">
+                        <div class="form-grup">
+                            <label for="oyun-ad">Adınız Soyadınız</label>
+                            <input type="text" id="oyun-ad" class="form-input" placeholder="Adınızı ve soyadınızı giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="oyun-email">E-posta Adresiniz</label>
+                            <input type="email" id="oyun-email" class="form-input" placeholder="E-posta adresinizi giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="oyun-telefon">Telefon Numaranız</label>
+                            <input type="tel" id="oyun-telefon" class="form-input" placeholder="Telefon numaranızı giriniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="oyun-konu">Oyun Projesi/Konusu</label>
+                            <input type="text" id="oyun-konu" class="form-input" placeholder="Oyun projenizi veya konusunu belirtiniz">
+                        </div>
+                        
+                        <div class="form-grup">
+                            <label for="oyun-detay">Detaylar</label>
+                            <textarea id="oyun-detay" class="form-input form-textarea" placeholder="Oyun projesi hakkında detayları yazabilirsiniz"></textarea>
+                        </div>
+                        
+                        <button type="button" class="randevu-btn" id="oyun-gönder">
+                            <i class="fas fa-calendar-check"></i>
+                            Randevu Oluştur
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="özet-bölüm" id="randevu-özeti" style="display: none;">
+                <div class="özet-başlık">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Randevu Özetiniz</h3>
+                </div>
+                
+                <div class="özet-liste">
+                    <div class="özet-madde">
+                        <span class="etiket">Randevu Türü:</span>
+                        <span class="değer" id="özet-tür">Yazılım Danışmanlığı</span>
+                    </div>
+                    <div class="özet-madde">
+                        <span class="etiket">Tarih:</span>
+                        <span class="değer" id="özet-tarih">19 Mayıs 2025</span>
+                    </div>
+                    <div class="özet-madde">
+                        <span class="etiket">Saat:</span>
+                        <span class="değer" id="özet-saat">10:00</span>
+                    </div>
+                    <div class="özet-madde">
+                        <span class="etiket">Ad Soyad:</span>
+                        <span class="değer" id="özet-ad">-</span>
+                    </div>
+                    <div class="özet-madde">
+                        <span class="etiket">E-posta:</span>
+                        <span class="değer" id="özet-email">-</span>
+                    </div>
+                    <div class="özet-madde">
+                        <span class="etiket">Konu:</span>
+                        <span class="değer" id="özet-konu">-</span>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; text-align: center;">
+                    Randevunuz başarıyla oluşturuldu <i class="emoji">✅</i><br>
+                    Randevu detayları e-posta adresinize gönderildi.
+                </p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button type="button" class="randevu-btn" id="yeni-randevu">
+                        <i class="fas fa-plus"></i>
+                        Yeni Randevu Oluştur
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <div class="sidebar-buttons">
+            <a href="index.html">
+                <button id="anasayfa" class="sidebar-button neon-btn" data-target="home">
+                    <i class="fas fa-home"></i>
+                    <span>Ana Sayfa</span>
+                    <div class="neon-border"></div>
+                </button>
+            </a>
+
+            <a href="galeri.html">
+                <button id="galeri" class="sidebar-button neon-btn" data-target="gallery">
+                    <i class="fas fa-images"></i>
+                    <span>Galeri</span>
+                    <div class="neon-border"></div>
+                </button>
+            </a>
+
+            <a href="system.html">
+                <button id="sistem" class="sidebar-button neon-btn" data-target="system">
+                    <i class="fas fa-mouse"></i>
+                    <span>Sistem</span>
+                    <div class="neon-border"></div>
+                </button>
+            </a>
+
+            <a href="programlarım.html">
+                <button id="programlarım" class="sidebar-button neon-btn" data-target="code">
+                    <i class="fas fa-code"></i>
+                    <span>Programlarım</span>
+                    <div class="neon-border"></div>
+                </button>
+            </a>
+
+            <a href="randevu.html">
+                <button id="randevu" class="sidebar-button neon-btn active" data-target="schedule">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Randevu Programı</span>
+                    <div class="neon-border"></div>
+                </button>
+            </a>
+
+            <a href="oyunlar.html">
+                <button id="oyunlar" class="sidebar-button neon-btn" data-target="games">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Oynadığım Oyunlar</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+
+            <a href="iletisim.html">
+            <button id="iletişim" class="sidebar-button neon-btn" data-target="contact">
+                <i class="fas fa-envelope"></i>
+                <span>İletişim</span>
+                <div class="neon-border"></div>
+            </button>
+            </a>
+        </div>
+
+         <div class="social-links">
+            <a href="https://www.youtube.com/@emirhantzgl" class="social-icon youtube" data-tooltip="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com/emirhantazegull" class="social-icon twitter" data-tooltip="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://discord.gg/emirhan36" class="social-icon discord" data-tooltip="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://www.instagram.com/emirhantazegull/" class="social-icon instagram" data-tooltip="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://open.spotify.com/user/31su5kv56ajlk5cnywt65c2dpld4" class="social-icon spotify" data-tooltip="Spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="page-transition"></div>
+    <div class="notification"></div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script src="randevu.js"></script>
+</body>
+</html>
